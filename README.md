@@ -1,17 +1,39 @@
-# gify
-JavaScript API for decoding/parsing information from animated GIFs using ArrayBuffers.
+gif-info
+========
 
-## Why?
-Once I saw [vinepeek](http://www.vpeeker.com/), I immediately wanted to build a similar site for animated GIFs. The only problem was, there was no way to quickly determine the duration of an animated GIF, which varies in different browsers. Thus, gify was born over a weekend.
+gif-info is currently only available as a CommonJS module to use with Browserify.
 
-## Requirements
-gify requires [jDataView](https://github.com/vjeux/jDataView) for reading binary files. Please pull the latest from their repository.
+`npm install gif-info`
 
-## Methods
-* **isAnimated**(sourceArrayBuffer) (bool)
-* **getInfo**(sourceArrayBuffer) (gifInfo)
+A JavaScript library for reading information from animated GIFs
 
-## info Properties
+
+How to use
+==========
+
+First you need to get the gif file into memory as `ArrayBuffer`. This is out of scope of gif-info, but you could for example load it via xhr with `responseType` set to `arraybuffer`. Then simply pass the data to the function exported by gif-info.
+
+```js
+var xhr = require('xhr');
+var gifInfo = require('gif-info');
+
+var options = {
+  url: 'fail.gif',
+  method: 'GET',
+  responseType: 'arraybuffer'
+};
+
+xhr(options, function(err, response, buffer) {
+  var info = gifInfo(buffer);
+
+  //Now use stuff like info.animated, info.duration or info.width.
+});
+```
+
+
+info Properties
+---------------
+
 * **valid** (bool) - Determines if the GIF is valid.
 * **animated** (bool) - Determines if the GIF is animated.
 * **globalPalette** (bool) - Determines if the GIF has a global color palette.
@@ -28,7 +50,10 @@ gify requires [jDataView](https://github.com/vjeux/jDataView) for reading binary
 * **durationChrome** (int) - Duration for Chrome in milliseconds (50fps)
 * **durationOpera** (int) - Duration for Opera in milliseconds (50fps)
 
-## image Properties
+
+image Properties
+----------------
+
 * **identifier** (string) - Image identifier (frame number or embeded string).
 * **top** (int) - Image top position (Y).
 * **left** (int) - Image left position (X).
@@ -42,7 +67,10 @@ gify requires [jDataView](https://github.com/vjeux/jDataView) for reading binary
 * **comments** ([comments]) - Array of comment strings.
 * **disposal** (int) - Disposal method. (0-7). See [this](http://www.w3.org/Graphics/GIF/spec-gif89a.txt) for more details.
 
-### Example
+
+Example
+-------
+
 ``` json
 {
   "valid": true,
@@ -120,12 +148,17 @@ gify requires [jDataView](https://github.com/vjeux/jDataView) for reading binary
 }
 ```
 
-## Resources
+Resources
+---------
+
 * [What's In A GIF - Bit by Byte](http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp) - Hands down the best write up on GIFs I've found.
 * [GIF98](http://www.w3.org/Graphics/GIF/spec-gif89a.txt) - GIF98 RFC.
 * [Animated GIF Frame Rate by Browser](http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility) - An awesome breakdown of how each browser renders animated GIFs. Thanks to Jeremiah Johnson for doing the hard work.
 * [GIF Format](http://www.onicos.com/staff/iz/formats/gif.html) - GIF blocks.
 * [Hexfiend](http://ridiculousfish.com/hexfiend/) - Awesome open source HEX editor (OSX)
 
-## License
+
+License
+-------
+
 Licence: [Do What The Fuck You Want To Public License](http://sam.zoy.org/wtfpl/)
