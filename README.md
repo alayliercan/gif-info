@@ -162,3 +162,11 @@ License
 -------
 
 Licence: [Do What The Fuck You Want To Public License](http://sam.zoy.org/wtfpl/)
+
+
+Changelog
+---------
+
+### 1.0.1 (2016-04-12)
+
+* Fixed width/height being switched.
