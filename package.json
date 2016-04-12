@@ -1,6 +1,6 @@
 {
   "name": "gif-info",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Library for reading information from animated GIFs",
   "main": "index.js",
   "scripts": {
