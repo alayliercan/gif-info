@@ -99,9 +99,9 @@ function getInfo(sourceArrayBuffer) {
 		return info;
 	}
 
-	//get height/width
-	info.height = view.getUint16(6, true);
-	info.width = view.getUint16(8, true);
+	//get width/height
+	info.width = view.getUint16(6, true);
+	info.height = view.getUint16(8, true);
 
 	//not that safe to assume, but good enough by this point
 	info.valid = true;

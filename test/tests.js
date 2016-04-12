@@ -9,8 +9,8 @@ var gifFiles = [
 			valid: true,
 			animated: true,
 			loopCount: 0,
-			width: 377,
-			height: 500,
+			width: 500,
+			height: 377,
 			duration: 2780
 		}
 	},
@@ -20,9 +20,31 @@ var gifFiles = [
 			valid: true,
 			animated: true,
 			loopCount: 0,
-			width: 180,
-			height: 250,
+			width: 250,
+			height: 180,
 			duration: 2800
+		}
+	},
+	{
+		name: 'size-1.gif',
+		info: {
+			valid: true,
+			animated: true,
+			loopCount: 0,
+			width: 555,
+			height: 325,
+			duration: 2160
+		}
+	},
+	{
+		name: 'size-2.gif',
+		info: {
+			valid: true,
+			animated: true,
+			loopCount: 97,
+			width: 320,
+			height: 180,
+			duration: 5040
 		}
 	}
 ];
