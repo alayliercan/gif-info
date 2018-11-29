@@ -1,6 +1,6 @@
 {
   "name": "gif-info",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library for reading information from animated GIFs",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Prinzhorn/gif-info.git"
+    "url": "git+https://github.com/alayliercan/gif-info.git"
   },
   "keywords": [
     "gif",
@@ -19,13 +19,14 @@
   ],
   "author": "Ryan French <frenchrya@gmail.com>",
   "contributors": [
-    "Alexander Prinzhorn <alexander@prinzhorn.it>"
+    "Alexander Prinzhorn <alexander@prinzhorn.it>",
+    "Ercan ALAYLI <ercan.alayli@adstream.com>"
   ],
   "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/Prinzhorn/gif-info/issues"
+    "url": "https://github.com/alayliercan/gif-info/issues"
   },
-  "homepage": "https://github.com/Prinzhorn/gif-info#readme",
+  "homepage": "https://github.com/alayliercan/gif-info#readme",
   "devDependencies": {
     "lodash": "4.10.0",
     "xhr": "2.2.0"

@@ -1,15 +1,12 @@
-gif-info
-========
+# gif-info
 
 gif-info is currently only available as a CommonJS module to use with Browserify.
 
-`npm install gif-info`
+`npm install alayliercan/gif-info`
 
 A JavaScript library for reading information from animated GIFs
 
-
-How to use
-==========
+# How to use
 
 First you need to get the gif file into memory as `ArrayBuffer`. This is out of scope of gif-info, but you could for example load it via xhr with `responseType` set to `arraybuffer`. Then simply pass the data to the function exported by gif-info.
 
@@ -30,53 +27,49 @@ xhr(options, function(err, response, buffer) {
 });
 ```
 
+## info Properties
 
-info Properties
----------------
+- **valid** (bool) - Determines if the GIF is valid.
+- **animated** (bool) - Determines if the GIF is animated.
+- **globalPalette** (bool) - Determines if the GIF has a global color palette.
+- **globalPaletteSize** (int) - Size of the global color palette.
+- **height** (int) - Canvas height.
+- **width** (int) - Canvas width.
+- **loopCount** (int) - Total number of times the GIF will loop. 0 represents infinite.
+- **infiniteLoop** (bool) - Determines if the GIF has endless loop
+- **images** ([images]) - Array of images contained in the GIF.
+- **isBrowserDuration** (bool) - If any of the delay times are lower than the [minimum value](http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility), this value will be set to true.
+- **duration** (int) - Actual duration calculated from the delay time for each image. If isBrowserDuration is false, you should use this value.
+- **durationIE** (int) - Duration for Internet Explorer (16fps)
+- **durationSafari** (int) - Duration for Safari in milliseconds (50fps)
+- **durationFirefox** (int) - Duration for Firefox in milliseconds (50fps)
+- **durationChrome** (int) - Duration for Chrome in milliseconds (50fps)
+- **durationOpera** (int) - Duration for Opera in milliseconds (50fps)
 
-* **valid** (bool) - Determines if the GIF is valid.
-* **animated** (bool) - Determines if the GIF is animated.
-* **globalPalette** (bool) - Determines if the GIF has a global color palette.
-* **globalPaletteSize** (int) - Size of the global color palette.
-* **height** (int) - Canvas height.
-* **width** (int) - Canvas width.
-* **loopCount** (int) - Total number of times the GIF will loop. 0 represents infitine.
-* **images** ([images]) - Array of images contained in the GIF.
-* **isBrowserDuration** (bool) - If any of the delay times are lower than the [minimum value](http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility), this value will be set to true.
-* **duration** (int) - Actual duration calculated from the delay time for each image. If isBrowserDuration is false, you should use this value.
-* **durationIE** (int) - Duration for Internet Explorer (16fps)
-* **durationSafari** (int) - Duration for Safari in milliseconds (50fps)
-* **durationFirefox** (int) - Duration for Firefox in milliseconds (50fps)
-* **durationChrome** (int) - Duration for Chrome in milliseconds (50fps)
-* **durationOpera** (int) - Duration for Opera in milliseconds (50fps)
+## image Properties
 
+- **identifier** (string) - Image identifier (frame number or embeded string).
+- **top** (int) - Image top position (Y).
+- **left** (int) - Image left position (X).
+- **height** (int) - Image height.
+- **width** (int) - Image width.
+- **localPalette** (bool) - Image has a local color palette.
+- **localPaletteSize** (int) - Size of the local color palette.
+- **interlace** (bool) - Image is/is not interlaced.
+- **delay** (int) - Delay time in milliseconds.
+- **text** (string) - frame text. aka Plain Text Extension.
+- **comments** ([comments]) - Array of comment strings.
+- **disposal** (int) - Disposal method. (0-7). See [this](http://www.w3.org/Graphics/GIF/spec-gif89a.txt) for more details.
 
-image Properties
-----------------
+## Example
 
-* **identifier** (string) - Image identifier (frame number or embeded string).
-* **top** (int) - Image top position (Y).
-* **left** (int) - Image left position (X).
-* **height** (int) - Image height.
-* **width** (int) - Image width.
-* **localPalette** (bool) - Image has a local color palette.
-* **localPaletteSize** (int) - Size of the local color palette.
-* **interlace** (bool) - Image is/is not interlaced.
-* **delay** (int) - Delay time in milliseconds.
-* **text** (string) - frame text. aka Plain Text Extension.
-* **comments** ([comments]) - Array of comment strings.
-* **disposal** (int) - Disposal method. (0-7). See [this](http://www.w3.org/Graphics/GIF/spec-gif89a.txt) for more details.
-
-
-Example
--------
-
-``` json
+```json
 {
   "valid": true,
   "globalPalette": true,
   "globalPaletteSize": 256,
   "loopCount": 0,
+  "infiniteLoop": false,
   "height": 1610,
   "width": 899,
   "animated": true,
@@ -148,25 +141,24 @@ Example
 }
 ```
 
-Resources
----------
+## Resources
 
-* [What's In A GIF - Bit by Byte](http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp) - Hands down the best write up on GIFs I've found.
-* [GIF98](http://www.w3.org/Graphics/GIF/spec-gif89a.txt) - GIF98 RFC.
-* [Animated GIF Frame Rate by Browser](http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility) - An awesome breakdown of how each browser renders animated GIFs. Thanks to Jeremiah Johnson for doing the hard work.
-* [GIF Format](http://www.onicos.com/staff/iz/formats/gif.html) - GIF blocks.
-* [Hexfiend](http://ridiculousfish.com/hexfiend/) - Awesome open source HEX editor (OSX)
+- [What's In A GIF - Bit by Byte](http://www.matthewflickinger.com/lab/whatsinagif/bits_and_bytes.asp) - Hands down the best write up on GIFs I've found.
+- [GIF98](http://www.w3.org/Graphics/GIF/spec-gif89a.txt) - GIF98 RFC.
+- [Animated GIF Frame Rate by Browser](http://nullsleep.tumblr.com/post/16524517190/animated-gif-minimum-frame-delay-browser-compatibility) - An awesome breakdown of how each browser renders animated GIFs. Thanks to Jeremiah Johnson for doing the hard work.
+- [GIF Format](http://www.onicos.com/staff/iz/formats/gif.html) - GIF blocks.
+- [Hexfiend](http://ridiculousfish.com/hexfiend/) - Awesome open source HEX editor (OSX)
 
-
-License
--------
+## License
 
 Licence: [Do What The Fuck You Want To Public License](http://sam.zoy.org/wtfpl/)
 
+## Changelog
 
-Changelog
----------
+### 1.0.2 (2018-11-28)
+
+- Added endless loop check.
 
 ### 1.0.1 (2016-04-12)
 
-* Fixed width/height being switched.
+- Fixed width/height being switched.
